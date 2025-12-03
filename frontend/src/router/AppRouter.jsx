@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from '../pages/HomePage';
-import ArchivePage from '../pages/ArchivePage';
-import ArchiveDetailPage from '../pages/ArchiveDetailPage';
-import CommunityPage from '../pages/CommunityPage';
+import HomePage from '../pages/Hoem/HomePage';
+import ArchivePage from '../pages/Archive/ArchivePage';
+import ArchiveDetailPage from '../pages/ArchiveDetail/ArchiveDetailPage';
+import CommunityPage from '../pages/Community/CommunityPage';
 
 const AppRouter = () => {
   return (
