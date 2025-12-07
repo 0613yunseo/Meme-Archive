@@ -23,9 +23,18 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    // ✅ JPA 추가 (엔티티, Repository 사용)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // ✅ Lombok 추가
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
     // ⭐ JPA + DB는 초기 단계에서는 비활성화
     // implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    // runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
