@@ -1,0 +1,91 @@
+.container {
+  display: flex;
+  width: 100%;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #fafafa;
+  gap: 40px;
+}
+
+/* 왼쪽 필터 영역 */
+.filterBox {
+  width: 240px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.filterSection {
+  margin-bottom: 20px;
+}
+
+.filterBtn,
+.yearBtn,
+.keywordBtn {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1.5px solid #a066ff;
+  background: #fff;
+  color: #a066ff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 오른쪽 메인 콘텐츠 */
+.mainContent {
+  flex: 1;
+}
+
+.pageTitle {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.searchBar {
+  width: 60%;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1.5px solid #ccc;
+  margin-bottom: 30px;
+}
+
+/* Rising keywords */
+.risingBox {
+  background: #f4ecff;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+}
+
+.risingItems {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.risingItem,
+.risingMain {
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: white;
+  border: 2px solid #c9a7ff;
+  font-size: 20px;
+}
+
+.risingMain {
+  background: #a066ff;
+  color: white;
+  border-color: #a066ff;
+}
+
+/* 카드 그리드 */
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-right: 40px;
+}
