@@ -22,12 +22,14 @@ dependencies {
     // ⭐ 기본 스프링 부트 WEB
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // ⭐ JPA + Hibernate
+    // ✅ JPA 추가 (엔티티, Repository 사용)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    // ⭐ Lombok (Getter/Setter 자동 생성)
+    // ✅ Lombok 추가
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 
     // ⭐ MySQL JDBC 드라이버
     runtimeOnly 'com.mysql:mysql-connector-j'
@@ -36,6 +38,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
+
 tasks.named('test') {
     useJUnitPlatform()
     ignoreFailures = true   // ⭐ 테스트 실패해도 build 성공 (초기 세팅용)
