@@ -1,35 +1,26 @@
 package com.example.demo.archive;
 
 import com.example.demo.meme.Meme;
+import com.example.demo.meme.MemeRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
-@RestController
+@Service
 @RequiredArgsConstructor
-@RequestMapping("/api/archive")
-public class ArchiveController {
+public class ArchiveService {
 
-    private final ArchiveService archiveService;
-
-    public ArchiveController(ArchiveService archiveService) {
-        this.archiveService = archiveService;
-    }
+    private final MemeRepository memeRepository;
     
-    @GetMapping
-    public ResponseEntity<?> getArchive(
-            @RequestParam(defaultValue = "latest") String sort
-    ) {
-        List<Meme> result = archiveService.getArchive(sort);
+    public ArchiveService(MemeRepository memeRepository) {
+        this.memeRepository = memeRepository;
+    }
 
-        return ResponseEntity.ok(
-                Map.of(
-                        "message", "success",
-                        "data", result
-                )
-        );
+    public List<Meme> getArchive(String sort) {
+        if ("popular".equals(sort)) {
+            return memeRepository.findTop18ByOrderByLikeCountDesc();
+        }
+        return memeRepository.findTop18ByOrderByCreatedAtDesc();
     }
 }
