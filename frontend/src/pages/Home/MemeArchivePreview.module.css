@@ -1,0 +1,65 @@
+.wrapper {
+  width: 100%;
+  padding: 0 24px;
+  margin: 80px 0;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+/* ✅ 스크롤 영역 */
+.scrollWrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-bottom: 24px;
+}
+
+/* 스크롤바 숨기기 */
+.scrollWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollWrapper::-webkit-scrollbar-thumb {
+  background: #fefeff;
+  border-radius: 8px;
+}
+
+/* 카드 줄 */
+.scrollRow {
+  display: flex;
+  gap: 32px;
+  width: max-content; /* ⭐ 이게 핵심 */
+  padding: 16px 0;
+}
+
+/* 카드 */
+.card {
+  width: 286px;
+  height: 275px;
+  flex-shrink: 0; /* ⭐ 절대 줄어들지 않음 */
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #eee;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 🔥 hover 시 확 커지게 */
+.card:hover {
+  transform: scale(1.25);
+  z-index: 10;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
