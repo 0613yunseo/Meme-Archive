@@ -23,12 +23,12 @@ public class Meme {
 
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    // ✅ 조회수 증가 전용 메서드
+    // ✅ 조회수 증가 메서드
     public void increaseViews() {
         this.views += 1;
     }
 
-    // (선택) 좋아요 증가
+    // ✅ 좋아요 증가 메서드
     public void increaseLikes() {
         this.likes += 1;
     }

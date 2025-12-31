@@ -1,6 +1,5 @@
 package com.meme.backend.repository;
 
-
 import com.meme.backend.domain.Meme;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
