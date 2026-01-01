@@ -19,27 +19,27 @@ repositories {
 }
 
 dependencies {
-    // ⭐ 기본 스프링 부트 WEB
+    // Spring Web
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    // ✅ JPA 추가 (엔티티, Repository 사용)
+    // JPA
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-    // ✅ Lombok 추가
+    // MySQL Connector
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
 
-    // ⭐ MySQL JDBC 드라이버
-    runtimeOnly 'com.mysql:mysql-connector-j'
-
-    // ⭐ 테스트
+    // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
-    ignoreFailures = true   // ⭐ 테스트 실패해도 build 성공 (초기 세팅용)
+    ignoreFailures = true
 }
