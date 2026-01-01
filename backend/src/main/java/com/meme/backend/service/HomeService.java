@@ -19,13 +19,8 @@ public class HomeService {
         List<Meme> popular = memeRepository.findTop3ByOrderByLikesDesc();
         List<Meme> latest = memeRepository.findTop6ByOrderByCreatedAtDesc();
 
-        // todayMeme = 최신 중 하나 선택
         Meme today = latest.isEmpty() ? null : latest.get(0);
 
-        return HomeResponseDto.builder()
-                .todayMeme(today)
-                .popular(popular)
-                .latest(latest)
-                .build();
+        return new HomeResponseDto(today, popular, latest);
     }
 }
