@@ -2,12 +2,15 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/meme_archive?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: root   # 각자 수정해야 함
-    password: manager   # 각자 수정해야 함
+    password: password   # 각자 수정해야 함
 
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
     properties:
       hibernate:
         format_sql: true
+    show-sql: true
+
+server:
+  port: 8080

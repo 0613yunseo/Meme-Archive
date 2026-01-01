@@ -1,0 +1,26 @@
+package com.example.demo.archive;
+
+import com.example.demo.meme.Meme;
+import com.example.demo.meme.MemeRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class ArchiveService {
+
+    private final MemeRepository memeRepository;
+    
+    public ArchiveService(MemeRepository memeRepository) {
+        this.memeRepository = memeRepository;
+    }
+
+    public List<Meme> getArchive(String sort) {
+        if ("popular".equals(sort)) {
+            return memeRepository.findTop18ByOrderByLikeCountDesc();
+        }
+        return memeRepository.findTop18ByOrderByCreatedAtDesc();
+    }
+}

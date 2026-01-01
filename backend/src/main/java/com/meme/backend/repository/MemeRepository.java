@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MemeRepository extends JpaRepository<Meme, Long> {
 
-    List<Meme> findAllByOrderByCreatedAtDesc();
-    List<Meme> findAllByOrderByLikesDesc();
+    List<Meme> findTop3ByOrderByLikesDesc();
 
+    List<Meme> findTop6ByOrderByCreatedAtDesc();
 }
