@@ -1,0 +1,479 @@
+/* src/pages/Detail/Detail.css - Figma 디자인 완벽 구현 */
+
+.detailHeaderSticky {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #ffffff;
+  }
+  
+  .detailPage {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    background: #fafafa;
+    overflow-x: hidden;
+  }
+  
+  .detailWrap {
+    width: 100%;
+  }
+  
+  
+  .detailContent {
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+  
+  /* ===== 1. 상단 타이틀 영역 ===== */
+  .detailTopRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 217px;
+    margin-bottom: 121px;
+  }
+  
+  .detailTitle {
+    font-size: 48px;
+    color: #212121;
+    font-weight: 400;
+  }
+  
+  /* ===== 2. 검색 버튼 ===== */
+  .detailSearchBtn {
+    width: 212px;
+    height: 50px;
+    border: none;
+    background: #f4f1fb;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 17px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .detailSearchBtn:hover {
+    background: #e8e2ff;
+  }
+  
+  .detailSearchIcon {
+    width: 23.91px;
+    height: 24.62px;
+    color: #7557ff;
+  }
+  
+  /* ===== 3. 메인 그리드 ===== */
+  .detailMainGrid {
+    display: grid;
+    grid-template-columns: 635px 1fr;
+    gap: 75.28px;
+    margin-bottom: 120px;
+  }
+  
+  /* ===== 4. 메인 이미지 ===== */
+  .detailMainImageBox {
+    position: relative;
+  }
+  
+  .detailMainImage {
+    width: 635px;
+    height: 509px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+  
+  /* ===== 5. 원본 링크 버튼 ===== */
+  .detailOriginBtn {
+    position: absolute;
+    right: 25px;
+    bottom: 15px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(117, 87, 255, 0.19);
+    color: #7557ff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+  }
+  
+  .detailOriginBtn:hover {
+    background: rgba(117, 87, 255, 0.25);
+  }
+  
+  /* ===== 6. GOAT 제목 ===== */
+  .detailInfo {
+    padding-top: 12px;
+  }
+  
+  .detailNameRow {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    margin-bottom: 32.5px;
+  }
+  
+  .detailMemeName {
+    font-size: 24px;
+    color: #212121;
+    font-weight: 500;
+  }
+  
+  /* ===== 7. 하트 아이콘 버튼 ===== */
+  .detailHeart {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #e8e2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .detailHeartIcon {
+    width: 18px;
+    height: 16.7px;
+    color: #7557ff;
+    fill: #7557ff;
+  }
+  
+  /* ===== 8. 태그 버튼들 ===== */
+  .detailTags {
+    display: flex;
+    gap: 26px;
+    margin-bottom: 89px;
+  }
+  
+  .tagBtn {
+    padding: 10px 25px;
+    border: 0.75px solid #7557ff;
+    border-radius: 999px;
+    background: #fff;
+    color: #7557ff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .tagBtn:hover {
+    background: #7557ff;
+    color: #fff;
+  }
+  
+  /* ===== 9. 설명 텍스트 ===== */
+  .detailDesc {
+    color: #212121;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .detailDesc p {
+    margin: 0;
+    line-height: 140%;
+  }
+  
+  /* ===== 10. Meme Use Cases ===== */
+.useCaseSection {
+    margin-bottom: 120px;
+    margin-left: -40px;
+    margin-right: -40px;
+  }
+  
+  .sectionTitle {
+    font-size: 24px;
+    color: #212121;
+    font-weight: 400;
+    margin-bottom: 43px;
+    padding-left: 40.28px;
+  }
+  
+  .useCaseViewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .useCaseScroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: 40.28px;  /* 왼쪽 40.28 */
+    padding-right: 0;       /* 오른쪽 0 */
+    padding-bottom: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+  
+  .useCaseScroller::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .useCaseRow {
+    display: flex;
+    gap: 35px;
+    align-items: flex-start;
+    width: max-content;
+  }
+  
+  /* 카드 크기(프레임) */
+  .useCard {
+    width: 258px;
+    height: 306px;
+    flex: 0 0 auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: width 0.25s ease, height 0.25s ease;
+  }
+  
+  .useCard:hover {
+    width: 351px;
+    height: 416px;
+    z-index: 10;
+  }
+  
+  /* 이미지 기본 */
+  .useImg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.25s ease, object-position 0.25s ease;
+    transform: scale(1.06);        /* ✅ 전체 기본 줌을 낮춤(현재보다 덜 크롭) */
+    object-position: 50% 50%;
+  }
+  
+  /* 호버 시 “살짝만” 더 */
+  .useCard:hover .useImg {
+    transform: scale(1.09);
+  }
+  
+  /* --- 카드별로 디자인에 맞게 미세 조정 --- */
+  
+  /* 1) 농구: 현재 너무 타이트 → 조금 덜 줌인 + 아래 조금 보여주기 */
+  .useCaseRow > .useCard:nth-of-type(1) .useImg {
+    transform: scale(1.05);
+    object-position: 50% 55%;
+  }
+  .useCaseRow > .useCard:nth-of-type(1):hover .useImg {
+    transform: scale(1.08);
+  }
+  
+  /* 2) 검은 포스터: 상단 메뉴가 더 보여야 함 → 덜 줌인 + 위로 */
+  .useCaseRow > .useCard:nth-of-type(2) .useImg {
+    transform: scale(1.06);        /* 기존 1.20대면 너무 큼 */
+    object-position: 50% 18%;      /* ✅ 위쪽을 더 보여줌 */
+  }
+  .useCaseRow > .useCard:nth-of-type(2):hover .useImg {
+    transform: scale(1.09);
+  }
+  
+  /* 3) 유튜브: 하단 UI/텍스트가 더 보여야 함 → 덜 줌인 + 아래로 */
+  .useCaseRow > .useCard:nth-of-type(3) .useImg {
+    transform: scale(1.04);
+    object-position: 50% 72%;      /* ✅ 아래쪽 더 보여줌 */
+  }
+  .useCaseRow > .useCard:nth-of-type(3):hover .useImg {
+    transform: scale(1.07);
+  }
+  
+  /* 4) 피자: 상단 타이틀/로고가 조금 더 보여야 함 → 덜 줌인 + 위로 살짝 */
+  .useCaseRow > .useCard:nth-of-type(4) .useImg {
+    transform: scale(1.05);
+    object-position: 50% 38%;
+  }
+  .useCaseRow > .useCard:nth-of-type(4):hover .useImg {
+    transform: scale(1.08);
+  }
+  
+  /* 5) 염소: "YOU HA..." 글자가 보이게 → 덜 줌인 + 왼쪽/위로 */
+  .useCaseRow > .useCard:nth-of-type(5) .useImg {
+    transform: scale(1.00);        /* ✅ 최대한 덜 크롭 */
+    object-position: 10% 25%;      /* ✅ 왼쪽 + 위쪽 텍스트 살리기 */
+  }
+  .useCaseRow > .useCard:nth-of-type(5):hover .useImg {
+    transform: scale(1.03);
+  }
+  
+  
+  /* ===== 11. Similar Memes 섹션 ===== */
+  .similarSection {
+    margin: 0 -40px 80px;
+  }
+  
+  .similarBg {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 634px;
+    border-radius: 20px;
+    padding: 60px 38px 60px 60px;
+    background: linear-gradient(
+      180deg,
+      #fafafa 0%,
+      #f7f5ff 25%,
+      #efecff 50%,
+      #f7f5ff 75%,
+      #fafafa 100%
+    );
+  }
+  
+  .similarLayout {
+    display: flex;
+    gap: 100px;
+    height: 100%;
+  }
+  
+  .similarLeft {
+    padding-top: 20px;
+    flex: 0 0 auto;
+  }
+  
+  .similarTitle {
+    font-size: 24px;
+    color: #212121;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .similarTitle2 {
+    font-size: 24px;
+    color: #212121;
+    font-weight: 400;
+    margin: 0 0 41px 0;
+  }
+  
+  .similarTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .similarRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .similarBig,
+  .similarSmall {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .similarBig {
+    height: 244px;
+  }
+  
+  .similarBig img,
+  .similarSmall img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  
+  .similarBig:hover img,
+  .similarSmall:hover img {
+    transform: scale(1.03);
+  }
+  
+  .similarBottomRow {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+  }
+  
+  .similarSmall {
+    height: 244px;
+    flex: 1;
+  }
+  
+  .similarArrow {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .similarArrowIcon {
+    width: 14px;
+    height: 14px;
+    color: #fff;
+  }
+  
+  /* ===== 12. 하단 네비게이션 (Prev/Next) ===== */
+  .navRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 60px;
+    padding-left: 40px;
+  }
+  
+  .navItem {
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    text-decoration: none;
+    color: #212121;
+  }
+  
+  .navItem.left {
+    align-items: flex-start;
+  }
+  
+  .navItem.right {
+    align-items: flex-end;
+  }
+  
+  .navLabel {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  .navIcon {
+    width: 52px;
+    height: 52px;
+    padding: 13.5px;
+    border-radius: 100px;
+    background: #f4f4f4;
+    color: #212121;
+  }
+  
+  .navThumb {
+    width: 273px;
+    height: 133px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+  }

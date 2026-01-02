@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap");
+
+:root {
+  --color-blueviolet: #7557ff;
+  --color-ghostwhite-100: #f7f6fa;
+  --color-ghostwhite-200: #f4f1fb;
+  --color-gray-100: #fdfdff;
+  --color-gray-200: #fafafa;
+  --color-gray-300: #8d8d8d;
+  --color-gray-400: #212121;
+  --color-gray-500: rgba(33, 33, 33, 0.8);
+  --color-lavender: #dfd9fb;
+  --color-lightgray: #cecece;
+  --color-mediumslateblue: #9781ff;
+  --color-white: #ffffff;
+
+  --font-inter: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-orbitron: Orbitron, sans-serif;
+}
+
+body {
+  font-family: var(--font-inter);
+}

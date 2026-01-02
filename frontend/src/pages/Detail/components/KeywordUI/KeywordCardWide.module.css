@@ -1,0 +1,18 @@
+.card {
+    width: 273px;
+    height: 133px;
+  
+    background: #d9d9d9;
+    position: relative;
+  
+    box-sizing: border-box;
+  }
+  
+  /* 검정 30% 오버레이 */
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
