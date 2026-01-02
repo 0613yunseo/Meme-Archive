@@ -1,83 +1,136 @@
-
-.hero {
-  padding: 120px 40px 80px;
-  background: linear-gradient(180deg, #fafafa, #f4f1fb);
+/* ===== 공통 레이아웃 컨테이너 ===== */
+.pageWrap {
+  background-color: #fafafa;
+  min-height: 100vh;
+  width: 100%;
 }
 
-.hero h1 {
-  font-size: 48px;
-}
-
-.hero p {
-  margin-top: 8px;
-  font-size: 20px;
-  color: #666;
-}
-
-.searchBox {
-  margin-top: 24px;
-  display: flex;
-  gap: 8px;
-}
-
-.searchBox input {
-  width: 400px;
-  height: 48px;
-  padding: 0 16px;
-}
-
-.searchBox button {
-  width: 48px;
-  cursor: pointer;
-}
-
+/* ===== 섹션 Max-width 정리 ===== */
 .section {
-  padding: 80px 40px;
+  max-width: 1360px;
+  margin: 0 auto;
 }
 
-.sub {
-  color: #666;
-  margin-bottom: 24px;
-}
-
-.cardRow {
-  display: flex;
-  gap: 20px;
-}
-
-.card {
-  width: 240px;
-  background: #f4f1fb;
-  border-radius: 12px;
-  padding: 16px;
-}
-
-.cardImage {
-  height: 140px;
-  background: #ddd;
-  border-radius: 8px;
-}
-
-.cardTitle {
-  margin-top: 8px;
-  font-weight: 500;
-}
-
-.tag {
-  font-size: 12px;
+/* ===== Today Meme 타이틀 ===== */
+.todayTitle {
+  font-family: Inter, sans-serif;
+  font-size: 64px;
+  font-weight: 400;
   color: #7557ff;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
-.suggest {
-  padding: 80px 40px;
+.todaySub {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  color: #8d8d8d;
+  text-align: center;
+}
+
+/* ===== Footer 위 공백 ===== */
+.footerSpace {
+  margin-top: 180px;
+}
+
+/* ===== 카드 호버 공통 ===== */
+.cardHover {
+  transition: transform 0.3s ease;
+}
+
+.cardHover:hover {
+  transform: scale(1.05);
+}
+
+/* ===== 박스 타이틀 ===== */
+.blockTitle {
+  font-family: Inter, sans-serif;
+  font-size: 24px;
+  color: #212121;
+}
+
+/* ===== 버튼 공통 ===== */
+.primaryButton {
+  background-color: #7557ff;
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: #6447ef;
+}
+
+.secondaryButton {
+  background-color: #f2fbf9;
+  color: #7557ff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.secondaryButton:hover {
+  background-color: #e5f5f2;
+}
+
+/* ===== Community label ===== */
+.sectionLabel {
+  font-family: Inter, sans-serif;
+  font-size: 40px;
+  color: #212121;
+  margin-bottom: 40px;
+}
+
+/* ===== 이미지 둥근 모서리 ===== */
+.roundedImage {
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* ===== 카드용 텍스트 ===== */
+.cardText {
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  color: #212121;
+}
+
+/* ===== 투표 버튼 텍스트 ===== */
+.voteText {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+/* ===== “What we do” 타이틀 ===== */
+.whatWeDoTitle {
+  font-family: Inter, sans-serif;
+  font-size: 48px;
+  font-weight: 500;
+  color: #212121;
+  margin-bottom: 60px;
+}
+
+/* ===== 공통 flex helper (Tailwind 대신 가끔 사용) ===== */
+.flexCenter {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-.box {
-  flex: 1;
-  padding: 32px;
-  background: rgba(117, 87, 255, 0.15);
-  border-radius: 12px;
+.flexBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* ===== 미디어 반응형(필요하면 활용) ===== */
+@media (max-width: 1024px) {
+  .todayTitle {
+    font-size: 48px;
+  }
+
+  .section {
+    padding: 0 20px;
+  }
+}

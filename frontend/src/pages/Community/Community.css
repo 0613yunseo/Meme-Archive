@@ -43,7 +43,7 @@
   max-width: 1440px;   /* 피그마 프레임 */
   margin: 0 auto;
 
-  padding: 90px 0 0 0; /* ✅ 좌/우 40px 여백 */
+  padding: 210px 0 0 0; /* ✅ 좌/우 40px 여백 */
   box-sizing: border-box;
 
   justify-content: start; /* ✅ 왼쪽 기준 정렬 */

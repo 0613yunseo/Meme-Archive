@@ -30,7 +30,7 @@
   width: 100%;
   box-sizing: border-box;   /* ✅ 이거 필수 */
   height: auto;
-  padding: 80px 20px 48px;
+  padding: 210px 20px 48px;
   max-width: none;
   display: flex;
   flex-direction: column;
@@ -39,13 +39,13 @@
 
 @media (min-width: 768px) {
   .page {
-    padding: 114px 48px 72px; /* ✅ 72 → 48 */
+    padding: 210px 48px 72px; /* ✅ 72 → 48 */
   }
 }
 
 @media (min-width: 1280px) {
   .page {
-    padding: 114px 40px 72px; /* ✅ 큰 화면은 더 꽉 차게 */
+    padding: 210px 40px 72px; /* ✅ 큰 화면은 더 꽉 차게 */
   }
 }
 
