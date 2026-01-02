@@ -1,67 +1,77 @@
-/* ===== 전체 헤더 영역 ===== */
 .header {
-  width: 100%;
+  position: absolute;
+  top: 24px;
+  left: 40px;
+  width: 1366px;
   height: 73px;
-  background: white;
-  font-family: Inter, sans-serif;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 67.38px 40px; /* 위 아래 간격 고정값 */
-  box-sizing: border-box;
 }
 
-/* ===== 왼쪽 로고 ===== */
+/* 로고 TrendArc */
 .logo {
-  width: 220px;
-  height: 47px;
-
-  font-family: "Orbitron", sans-serif;
+  position: absolute;
+  left: 0;
+  top: 25px;              /* ← 살짝 내려온 상태 */
+  font-family: Orbitron, sans-serif;
   font-size: 40px;
-  font-weight: 500;
   color: #7557ff;
-  line-height: 1;
-  display: flex;
-  align-items: center;
+  font-weight: 500;
+  text-decoration: none;
 }
-/* ===== 가운데 메뉴 그룹 ===== */
-.menuGroup {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
+.logo:hover {
+  opacity: .8;
+}
+
+/* 중앙 메뉴 */
+.menuWrap {
+  position: absolute;
+  left: 24%;
+  right: 24%;
+  top: 22px;
+  display: flex;
   gap: 40px;
+  align-items: center;
+  text-align: center;
+  font-family: Inter, sans-serif;
   font-size: 18px;
-  font-weight: 500;
-  color: rgba(33, 33, 33, 0.8);
+  color: rgba(33,33,33,.8);
 }
 
-.menuGroup > div {
-  cursor: pointer;
+.menuWrap a {
+  text-decoration: none;
+  color: rgba(33,33,33,.8);
 }
 
-/* ===== 오른쪽 Sign in + 아이콘 묶음 ===== */
-.signInWrap {
+.menuWrap a:hover {
+  color: #212121;
+}
+
+/* Sign in + 아이콘 묶어서 정렬 */
+.signIn {
+  position: absolute;
+  right: 42px;        /* 아이콘 간격 */
+  top: 20px;          /* ← 살짝 위로 */
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  color: #7557ff;
+}
+
+/* 아이콘 위치 */
+.rightIcon {
+  position: absolute;
+  right: 12px;        /* Sign in 오른쪽 */
+  top: 32px;          /* Sign in 과 수평 정렬 */
+  width: 24px;
+  height: 24px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
+  justify-content: center;
+  z-index: 5;
 }
 
-/* Sign in 텍스트 */
-.signIn {
-  font-size: 18px;
-  font-weight: 500;
-  color: #7557ff;
-  line-height: 1; /* 아이콘이랑 높이 정확히 맞추기 위함 */
-}
-
-/* 텍스트 높이와 아이콘 높이를 1:1로 완전히 맞추기 위해 1em 사용 */
-.arrowIcon {
-  height: 1em; /* signIn의 font-size(20px)와 동일한 높이 */
-  width: auto;
-  display: block;
+/* 아이콘 자체 */
+.iconWrap {
+  width: 24px;
+  height: 24px;
+  
 }

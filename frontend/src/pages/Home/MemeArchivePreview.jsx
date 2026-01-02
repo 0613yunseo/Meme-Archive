@@ -1,4 +1,5 @@
-// src/Home/MemeArchivePreview.jsx
+// src
+// /Home/MemeArchivePreview.jsx
 import { useNavigate } from "react-router-dom";
 import styles from "./MemeArchivePreview.module.css";
 

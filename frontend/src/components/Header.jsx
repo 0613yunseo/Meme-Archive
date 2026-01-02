@@ -1,39 +1,43 @@
 // src/components/Header.jsx
-import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import ArrowRightPurple from "../assets/arrow-up-right.svg";
+import svgPaths from "../assets/arrow-up-right.svg";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-  const navigate = useNavigate();
 
+function Frame8() {
   return (
-    <div className={styles.header}>
-      {/* 왼쪽 로고 → 클릭 시 홈으로 이동 */}
-      <div className={styles.logo} onClick={() => navigate("/")}>
-        TrendArc
-      </div>
-
-      {/* 메뉴 */}
-      <div className={styles.menuGroup}>
-        <div onClick={() => navigate("/archive")}>Meme Archive</div>
-        <div className={styles.divider}>/</div>
-
-        <div onClick={() => navigate("/creation")}>Meme Creation</div>
-        <div className={styles.divider}>/</div>
-
-        <div onClick={() => navigate("/community")}>Community</div>
-        <div className={styles.divider}>/</div>
-
-        <div onClick={() => navigate("/mypage")}>My Page</div>
-      </div>
-
-      {/* Sign In + 화살표 */}
-      <div className={styles.signInWrap}>
-        <span className={styles.signIn}>Sign in</span>
-        <img src={ArrowRightPurple} className={styles.arrow} alt="arrow" />
-      </div>
+    <div className={styles.iconWrap}>
+      <img src={svgPaths} alt="icon" />
     </div>
   );
-};
+}
 
-export default Header;
+function Frame70() {
+  return (
+    <div className={styles.menuWrap}>
+      <Link to="/archive">Meme Archive</Link>
+      <p>/</p>
+      <p>Meme Creation</p>
+      <p>/</p>
+      <Link to="/community">Community</Link>
+      <p>/</p>
+      <p>My Page</p>
+    </div>
+  );
+}
+
+export default function Header() {
+  return (
+    <header className={styles.header}>
+      <Link to="/" className={styles.logo}>TrendArc</Link>
+
+      <Frame70 />
+
+      <div className={styles.rightIcon}>
+        <Frame8 />
+      </div>
+
+      <p className={styles.signIn}>Sign in</p>
+    </header>
+  );
+}
