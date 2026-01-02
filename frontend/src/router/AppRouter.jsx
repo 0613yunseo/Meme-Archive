@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Routes, Route, Navigate } from "react-router-dom";
 import Community from "../pages/Community/Community.jsx";
 import Detail from "../pages/Detail/Detail.jsx";
@@ -6,6 +7,17 @@ import Detail from "../pages/Detail/Detail.jsx";
 // import HomePage from "../pages/Home/HomePage.jsx";
 
 export default function AppRouter() {
+=======
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+/*
+import HomePage from '../pages/Home/HomePage';
+import ArchivePage from '../pages/Archive/ArchivePage';
+import ArchiveDetailPage from '../pages/ArchiveDetail/ArchiveDetailPage';
+import CommunityPage from '../pages/Community/CommunityPage';
+*/
+const AppRouter = () => {
+>>>>>>> dev
   return (
     <Routes>
       {/* ✅ 기본 진입은 커뮤니티로 */}
