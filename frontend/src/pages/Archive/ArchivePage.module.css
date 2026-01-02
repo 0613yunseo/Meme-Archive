@@ -1,6 +1,793 @@
+ feature/sarang-homepage
 .page {
   width: 100%;
   min-height: 100vh;
   padding: 40px;
   background-color: #fafafa;
 }
+
+/* ✅ Vite 기본 #root max-width / padding 때문에 생기는 양옆 흰 여백 제거 */
+:global(html, body, #root) {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+:global(#root) {
+  max-width: none;
+  padding: 0;
+}
+
+:global(body) {
+  background: #fafafa;
+  overflow-y: auto;   /* ✅ 전체 스크롤 */
+  overflow-x: hidden;
+}
+
+.screen {
+  position: relative;   /* ✅ fixed 제거 */
+  min-height: 100vh;
+  overflow-x: hidden;   /* 가로만 막기 */
+  background: #fafafa;
+  text-align: left;
+}
+
+
+.page {
+  width: 100%;
+  box-sizing: border-box;   /* ✅ 이거 필수 */
+  height: auto;
+  padding: 80px 20px 48px;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: 114px 48px 72px; /* ✅ 72 → 48 */
+  }
+}
+
+@media (min-width: 1280px) {
+  .page {
+    padding: 114px 40px 72px; /* ✅ 큰 화면은 더 꽉 차게 */
+  }
+}
+
+
+/* 상단 */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1;
+  color: #212121;
+}
+
+.searchPill {
+  width: 260px;
+  height: 56px;
+  border: 0;
+  border-radius: 999px;
+  background: #f3efff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 18px;
+  cursor: pointer;
+}
+
+.searchIcon {
+  width: 34px;
+  height: 34px;
+  color: #7557ff;
+}
+
+/* Rising Card */
+.risingCard {
+  background: linear-gradient(91.5deg,
+      #eeebff 1%,
+      #fbf9ff 22.66%,
+      #f4efff 60.7%,
+      #e9e0ff 98.73%);
+  border-radius: 10px;
+  position: relative;
+  padding: 48px 64px;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 40px;
+  min-height: 326px;
+  box-sizing: border-box;
+}
+
+.risingLeft {
+  min-width: 320px;
+}
+
+.risingTitle {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: #212121;
+  line-height: 39px;
+}
+
+.trophyCircle {
+  width: 91px;
+  height: 91px;
+  border-radius: 999px;
+  background: #e7e1ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 26px;
+}
+
+.trophyIcon {
+  width: 53px;
+  height: 52px;
+  color: #7557ff;
+}
+
+.risingRight {
+  position: absolute;
+  right: 125px;
+  bottom: 0;
+  margin-left: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 31px;
+  flex-wrap: nowrap;
+}
+
+.podiumItem {
+  width: 149px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podiumItemSmall {
+  margin-top: 76px;
+  /* 2,3등 아래로 */
+}
+
+
+.podiumLabel {
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #7557ff;
+  margin-bottom: 26px;
+}
+
+.podiumImg {
+  width: 149px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+  /* top만 */
+}
+
+
+.podiumImgSmall {
+  height: 144px;
+}
+
+.podiumImgBig {
+  height: 219px;
+}
+
+.podiumImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.podiumOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.podiumRank {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 31px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 500;
+  color: #f2fbf9;
+}
+
+.podiumImgSmall .podiumRank {
+  top: 33px;
+}
+
+@media (max-width: 900px) {
+  .risingCard {
+    background: linear-gradient(91.5deg,
+        #eeebff 1%,
+        #fbf9ff 22.66%,
+        #f4efff 60.7%,
+        #e9e0ff 98.73%);
+    border-radius: 10px;
+    padding: 48px 64px;
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 40px;
+    min-height: 326px;
+    box-sizing: border-box;
+
+    /* 그림자 추가 */
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.03);
+  }
+
+  .risingRight {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 0;
+  }
+
+  .podiumItemSmall {
+    margin-top: 0;
+  }
+}
+
+/* 본문 2열 */
+.contentRow {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+@media (min-width: 1024px) {
+  .contentRow {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 900px) {
+  .risingRight {
+    position: static;
+  }
+}
+
+
+.sidebarOpen {
+  flex: 0 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .sidebarOpen,
+  .sidebarClosed {
+    display: flex;
+    align-self: stretch;  /* ✅ 오른쪽 높이에 맞춰 같이 늘어남 */
+  }
+
+  .sidebarOpen {
+    width: 385px;
+    min-width: 385px;
+  }
+
+  .sidebarClosed {
+  flex: 0 0 96px;   /* ✅ 레이아웃에서 자리 고정 */
+  width: 96px;
+  min-width: 96px;
+}
+
+  .sidebarBox,
+  .sidebarMini {
+    height: 100%;         /* ✅ 늘어난 aside를 꽉 채우는 흰 바 */
+    overflow: visible;    /* ✅ 내부 스크롤 금지 */
+  }
+}
+
+
+/* Sidebar */
+.sidebarBox {
+  background: #fdfdfd;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.04);
+  padding: 24px 22px 24px 18px;
+  box-sizing: border-box;
+  height: 100%;
+  flex: 1;
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+  padding-bottom: 82px;
+}
+
+.sidebarTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.sidebarMini {
+  background: #fdfdfd;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+
+  width: 100%;      /* ✅ 닫힘 바 “사라짐” 방지 */
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 24px 0 0;
+}
+
+/* ✅ 닫힘 헤더영역(열림의 sidebarHeader랑 같은 역할) */
+.sidebarMiniHeader {
+  width: 100%;
+  height: 45px;            /* ✅ circleBtn(45)과 동일 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.circleBtn{
+  width: 45px;
+  height: 45px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 999px;
+  background: #f4f1fb;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #7557ff;
+
+  flex: 0 0 45px;     /* ✅ 늘어나지 않게 */
+  min-width: 45px;
+  min-height: 45px;
+  line-height: 0;
+}
+
+.arrowSvg {
+  width: 30px;
+  height: 30px;
+  display: block; /* ✅ SVG baseline 쏠림 방지 */
+}
+
+.arrowLeft {
+  transform: none;
+  transform-origin: 50% 50%;
+}
+
+.arrowRight {
+  transform: rotate(180deg);
+  transform-origin: 50% 50%;
+}
+
+
+.blockSort {
+  margin-bottom: 101px;
+}
+
+.blockYears {
+  margin-bottom: 156px;
+}
+
+.blockKeywords {
+  margin-bottom: 147px;
+}
+
+.blockTrends {
+  margin-bottom: 0;
+}
+
+.block {
+  margin-bottom: 34px;
+}
+
+.blockTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 14px;
+}
+
+.rowBtns {
+  display: flex;
+  gap: 20px;
+  /* 스샷 기준 넓은 간격 */
+  flex-wrap: nowrap;
+}
+
+
+.colBtns {
+  width: 280px;
+  height: 179px;
+  /* 37*3 + 35*2 = 179 */
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  align-items: flex-start;
+}
+
+.colBtns button:last-child {
+  margin-top: auto;
+  /* Hot on Instagram 아래로 붙이기 */
+}
+
+
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 85px);
+  /* Figma: 85 */
+  column-gap: 12.5px;
+  /* 3*85=255, 전체 280 기준 gap 근사 */
+  row-gap: 35px;
+  /* 스샷에 나온 35 */
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: auto auto;
+  /* 버튼 폭 = 내용 */
+  justify-content: space-between;
+  /* 2열 좌/우로 벌림 */
+  column-gap: 40px;
+  row-gap: 50px;
+}
+
+
+.keywordList {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 41.5px;
+  /* Animals 줄과 Fandom 줄 사이: 41.5 */
+}
+
+.keywordRow {
+  display: flex;
+  align-items: center;
+}
+
+
+.pillOn,
+.pillOff {
+  height: 37px;
+  padding: 10px 25px;
+  /* 피그마 */
+  border: 0;
+  border-radius: 50px;
+  /* 피그마 */
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+
+.pillOn {
+  background: #7557ff;
+  color: #f2fbf9;
+}
+
+.pillOff {
+  background: #f4f4f4;
+  color: #8d8d8d;
+}
+
+.pillOff:hover {
+  background: #7557ff;
+  color: #f2fbf9;
+}
+
+/* ✅ 필터 닫혔을 때 떠야 하는 Filter 라벨 */
+.closedFilterLabel {
+  display: inline-block;
+  margin-top: 2px;          /* 필요하면 0~4px 사이로만 미세조정 */
+}
+
+
+
+/* Main */
+.main {
+  flex: 1 1 auto;
+  min-width: 0;
+
+  /* ✅ 내부 스크롤 제거 -> 페이지 전체 스크롤 */
+  overflow: visible;
+}
+
+
+.sectionHead {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: clamp(48px, 10vw, 280px);
+  margin-bottom: 18px;
+}
+
+.sectionTitleWrap {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 12px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: #212121;
+}
+
+/* Grid */
+.memeGrid3,
+.memeGrid4 {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.memeGrid3 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.memeGrid4 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .memeGrid3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .memeGrid4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .memeGrid3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .memeGrid4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.card {
+  cursor: pointer;
+}
+
+.cardMedia {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f4f4f4;
+
+  position: relative; /* ✅ 패널 absolute 기준 */
+}
+
+/* ✅ 이미지(확대 효과) */
+.cardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* ✅ hover 시 뜨는 하단 정보 패널 */
+.cardInfo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: #ffffff;
+  padding: 18px 18px 16px;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ✅ hover 트리거 */
+.card:hover .cardInfo {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card:hover .cardImg {
+  transform: scale(1.03);
+}
+
+/* 패널 내부(제목/키워드/좋아요 등) */
+.cardTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #212121;
+  margin-bottom: 12px;
+}
+
+.cardChips {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.chip {
+  height: 34px;
+  padding: 0 18px;
+  border-radius: 999px;
+
+  border: 1px solid #7557ff;
+  color: #7557ff;
+  background: transparent;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #7557ff;
+  font-weight: 500;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metaIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.metaDivider {
+  width: 1px;
+  height: 16px;
+  background: rgba(117, 87, 255, 0.35);
+}
+
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+}
+
+.pageBtn:hover,
+.pageNum:hover,
+.pageNumOn {
+  color: #7557ff;
+  background: #f4f1fb;
+  font-weight: 500;
+}
+
+.pageBtn,
+.pageNum {
+  border: 0 !important;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
+  
+  margin: 0;                 /* ✅ 기본 여백 제거 */
+  padding: 0 12px;           /* ✅ 두번째 사진처럼 촘촘하게 */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 32px;            /* ✅ 추가 */
+  min-width: 32px;         /* ✅ 추가 */
+  border-radius: 8px;      /* ✅ 추가 (선택 배경 모양 맞추기) */
+}
+
+.pageNumOn {
+  background: #f4f1fb;
+  color: #7557ff;
+  font-weight: 500;
+}
+
+.pageNumOn:hover {
+  background: #f4f1fb;
+  color: #7557ff;
+}
+
+.pageBtn {
+  font-size: 26px;
+  color: #212121;
+}
+
+.pageDots {
+  font-size: 16px;
+  color: #212121;
+}
+
+/* ✅ 클릭/선택 후 생기는 검은 테두리(포커스 링) 제거 */
+.pillOn,
+.pillOff,
+.circleBtn,
+.pageBtn,
+.pageNum {
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pillOn:focus,
+.pillOff:focus,
+.circleBtn:focus,
+.pageBtn:focus,
+.pageNum:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.pillOn:focus-visible,
+.pillOff:focus-visible,
+.circleBtn:focus-visible,
+.pageBtn:focus-visible,
+.pageNum:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+ dev
