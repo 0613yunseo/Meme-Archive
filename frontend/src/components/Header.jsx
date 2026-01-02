@@ -1,6 +1,6 @@
+// src/components/Header.jsx
 import { useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-
 import ArrowRightPurple from "../assets/arrow-up-right.svg";
 
 const Header = () => {
@@ -8,9 +8,10 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      
-      {/* 왼쪽 로고(회색 박스) */}
-      <div className={styles.grayBox}></div>
+      {/* 왼쪽 로고 → 클릭 시 홈으로 이동 */}
+      <div className={styles.logo} onClick={() => navigate("/")}>
+        TrendArc
+      </div>
 
       {/* 메뉴 */}
       <div className={styles.menuGroup}>
@@ -31,7 +32,6 @@ const Header = () => {
         <span className={styles.signIn}>Sign in</span>
         <img src={ArrowRightPurple} className={styles.arrow} alt="arrow" />
       </div>
-
     </div>
   );
 };

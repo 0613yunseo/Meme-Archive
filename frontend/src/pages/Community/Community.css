@@ -1,0 +1,413 @@
+/* =========================
+   TrendArc Community (Figma 1440x2658)
+   ========================= */
+
+   .communityPage {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #212121;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  /* --- Design tokens --- */
+  :root {
+    --frame-w: 1440px;
+    --side-pad: 40px;
+    --content-w: 1280px;
+    --grid-gap: 48px;
+  
+    --brand: #7557ff;
+    --muted: rgba(33, 33, 33, 0.55);
+    --muted2: #8d8d8d;
+  
+    --card-white: #ffffff;
+    --shadow-soft: 0 0 20px rgba(0, 0, 0, 0.03);
+  
+    --radius-10: 10px;
+    --radius-18: 18px;
+  
+    --weekly-bg: #dfd9fb;
+  }
+  
+  /* ===== Main Grid (Today + Right) ===== */
+  /* 기존 mainGrid를 이것으로 교체 */
+.mainGrid {
+  display: grid;
+  grid-template-columns: 960px 360px; /* todayPanel 고정폭 + rightCol */
+  gap: 44px;
+
+  width: 100%;
+  max-width: 1440px;   /* 피그마 프레임 */
+  margin: 0 auto;
+
+  padding: 90px 0 0 0; /* ✅ 좌/우 40px 여백 */
+  box-sizing: border-box;
+
+  justify-content: start; /* ✅ 왼쪽 기준 정렬 */
+  align-items: start;
+}
+
+  
+  .leftCol {
+    min-width: 0;
+  }
+  
+  /* ===== Today Panel ===== */
+  .todayPanel {
+    background: linear-gradient(91.5deg, #eeebff 2.4%, #fbf9ff 24.04%, #f4efff 62.02%, #e9e0ff);
+    border-radius: var(--radius-10);
+    padding: 0; /* ✅ 44px -> 8px */
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 960px;
+    height: 529px;
+  }  
+  
+  .todayHeader{
+    position: absolute;
+    top: 30px;
+    left: 48px;
+  
+    margin: 0;
+    padding: 0;
+  }
+   
+  
+  .todayTitle {
+    margin: 0 0 7px 0;
+    padding: 0;
+    width: 645px;     /* ✅ */
+    height: 58px;     /* ✅ */
+  
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 48px; /* ✅ 100% */
+    letter-spacing: 0;
+  }  
+  
+  .todaySub {
+    margin: 0 0 7px 0;  /* ✅ Top 73px 정렬용: (Title 58px + 7px = 65px, + PanelTop 8px = 73px) */
+  
+    width: 449px;       /* ✅ */
+    height: 17px;       /* ✅ */
+    padding: 0;
+    font-size: 14px;    /* ✅ */
+    font-weight: 400;
+    line-height: 14px;  /* ✅ 100% */
+    letter-spacing: 0;
+  
+    color: #8d8d8d;     /* ✅ */
+  }  
+  
+  .todayCards {
+    position: absolute;
+    inset: 0;          /* todayPanel 기준 */
+    pointer-events: none; /* 카드 클릭은 voteCard에서만 */
+  }  
+  
+  
+  .voteCard {
+    position: absolute;   /* 🔥 핵심 */
+    width: 210.91px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  
+    border: 0;
+    padding: 0;
+    background: transparent;
+    pointer-events: auto; /* 클릭 가능 */
+  }
+  .voteCard.center {
+    top: 219px;
+    left: 374.79px;
+  }
+  .voteCard.left {
+    top: 325.16px;
+    left: 120px;
+  }
+  .voteCard.right {
+    top: 325.16px;
+    left: 629.59px;
+  }
+  
+  
+  .voteCard:focus,
+  .voteCard:focus-visible {
+    outline: none;
+  }
+  
+  
+  .voteNum {
+    position: absolute;
+    top: -36px;              /* 이미지 위 */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    font-weight: 500;
+    color: #7557ff;
+  }
+  
+  
+  .voteFrame{
+    width: 210.91px;
+    border-radius: 10px 10px 0 0; /* ✅ top만 10 */
+    overflow: hidden;
+    background: transparent;
+  }
+  
+  .voteFrame.center { height: 310px; }
+  .voteFrame.left,
+  .voteFrame.right { height: 203.84px; }
+  
+  .voteImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  
+  .voteCard.selected .voteFrame {
+    outline: 3px solid rgba(117, 87, 255, 0.9);
+    outline-offset: 6px;
+  }
+  
+  /* ===== Right Column ===== */
+  .rightCol {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  /* Upload Card */
+  .uploadCard {
+    background: var(--card-white);
+    border-radius: var(--radius-18);
+    box-shadow: var(--shadow-soft);
+    padding: 26px 24px 22px 24px;
+  }
+  
+  .uploadIconBox{
+    width: 48px;              /* ✅ */
+    height: 48px;             /* ✅ */
+    border-radius: 6px;      /* 필요하면 피그마 값으로 교체 */
+    background: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  
+  .uploadIcon{
+    width: 36px;              /* ✅ */
+    height: 36px;             /* ✅ */
+    display: block;
+    filter: brightness(0) invert(1);
+  }
+  
+  .uploadTitle{
+    width: auto;       /* ✅ (원하면 유지) */
+    height: 24px;        /* ✅ */
+    margin: 0 0 10px 0;  /* 기존 8px이면 조절 */
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;    /* ✅ */
+    font-size: 20px;     /* ✅ */
+    line-height: 20px;   /* ✅ 100% */
+    letter-spacing: 0;
+    color: #212121;      /* ✅ */
+  }
+  
+  
+  .uploadDesc{
+    width: 272px;        /* ✅ */
+    height: 57px;        /* ✅ */
+    margin: 0 0 20px 0;  /* 버튼 위 간격(필요시 조절) */
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;    /* ✅ */
+    font-size: 16px;     /* ✅ */
+    line-height: 16px;   /* ✅ 100% */
+    letter-spacing: 0;
+    color: #8D8D8D;      /* ✅ */
+  }
+  
+  
+  .uploadBtn{
+    width: 348px;        /* ✅ */
+    height: 43px;        /* ✅ */
+    border: 0;
+    border-radius: 14px; /* 피그마 값 있으면 교체 */
+    background: var(--brand);
+    color: #fff;      /* ✅ 요청값 (보통 흰색인데 너가 준 값 따름) */
+  
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;    /* ✅ */
+    font-size: 20px;     /* ✅ */
+    line-height: 20px;   /* ✅ 100% */
+    letter-spacing: 0;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  
+    margin-top: 10px;    /* ✅ 버튼 텍스트 top 10 느낌 (필요시 조절) */
+  }
+  
+  .rightCol{
+    display: flex;
+    flex-direction: column;
+    gap: 51.07px; /* ✅ UploadCard ↔ QuickCard 간격 */
+  }
+  
+  /* Quick Links */
+  .quickCard {
+    background: var(--card-white);
+    border-radius: var(--radius-18);
+    box-shadow: var(--shadow-soft);
+    padding: 22px 22px;
+  }
+  
+  .quickTitle{
+    width: 100px;       /* ✅ */
+    height: 22px;       /* ✅ */
+    margin: 0 0 18px 0;
+  
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 500;   /* ✅ */
+    font-size: 18px;    /* ✅ */
+    line-height: 18px;  /* ✅ 100% */
+    letter-spacing: 0;
+    color: #212121;     /* ✅ */
+  }
+  
+  
+  .quickLink{
+    width: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  
+    padding: 10px 6px;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;   /* ✅ */
+    font-size: 16px;    /* ✅ */
+    line-height: 16px;  /* ✅ 100% */
+    letter-spacing: 0;
+    color: #212121;     /* ✅ */
+  }
+
+  .rightCol{
+    width: 396.5px;
+  }
+  
+  
+  
+  .quickLink:hover {
+    background: rgba(117, 87, 255, 0.06);
+    border-radius: 10px;
+  }
+  
+  .quickIco {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+  
+  /* ===== Weekly ===== */
+  .weeklySection {
+    width: 100%;
+    margin-top: 146px;
+    padding: 0px var(--side-pad) 0 var(--side-pad);
+  }
+  
+  .weeklyInner {
+
+    width: 100%;       /* ✅ 섹션 안에서 꽉 차게 */
+    max-width: 100%;   /* ✅ 고정폭 말고 전체 사용 */
+    margin: 0;         /* 섹션 padding 기준으로만 정렬 */
+  }
+  
+  .weeklyTitle{
+    margin: 0 0 56.64px 0;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;     /* ✅ Regular */
+    font-size: 24px;      /* ✅ 24px */
+    line-height: 24px;    /* ✅ 100% */
+    letter-spacing: 0;
+    color: #212121;       /* ✅ */
+  }  
+  
+  .weeklyList {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+  
+  .viewAllWrap{
+    display: flex;
+    justify-content: center;
+    margin-top: 65.69px;   /* ✅ 5번째 카드 ↔ 버튼 간격 유지 */
+    padding-bottom: 70px;  /* 페이지 하단 여백 */
+  }  
+  
+  .viewAllBtn{
+    width: 210px;
+    height: 37px;
+  
+    background: #FFFF;
+    border: 0.85px solid #D0D0D0;
+    border-radius: 10px;
+  
+    box-sizing: border-box;
+    cursor: pointer;
+  
+    white-space: nowrap;
+    overflow: hidden;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 0 28px 0 29px;
+  
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    letter-spacing: 0;
+    color: #212121;
+  }
+  
+  
+  
+  
+  
+  
+  /* ===== Responsive ===== */
+  @media (max-width: 1200px) {
+    :root {
+      --side-pad: 24px;
+      --content-w: calc(100% - 48px);
+    }
+    .mainGrid {
+      grid-template-columns: 1fr;
+    }
+    .rightCol {
+      max-width: 420px;
+    }
+  }
+  

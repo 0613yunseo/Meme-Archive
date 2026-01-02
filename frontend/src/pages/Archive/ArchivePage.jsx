@@ -1,5 +1,10 @@
-import { useMemo, useState } from "react";
+// src/pages/Archive/ArchivePage.jsx
+import React, { useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";   // 👈 추가
 import styles from "./ArchivePage.module.css";
+
+import Header from "../../components/Header.jsx";
+import Footer from "../../components/Footer.jsx";
 
 import imgRectangle29 from "./assets/Photo/1.jpg";
 import imgRectangle30 from "./assets/Photo/2.png";
@@ -51,24 +56,6 @@ const keywordRows = [
   { left: "Korean", right: "English", gap: 44 },
   { left: "Japanese", right: "Global", gap: 26 },
 ];
-const allKeywords = keywordRows.flatMap((row) => [row.left, row.right]);
-
-const keywordBtnWidth = {
-  "Animals": 103,
-  "Celebrity": 111,
-  "Fandom": 105,
-  "Work Life": 113,
-  "School Life": 124,
-  "Dating / Love": 139,
-  "Food": 84,
-  "Tech": 83,
-  "Funny": 91,
-  "Dark Humor": 130,
-  "Korean": 97,
-  "English": 99,
-  "Japanese": 115,
-  "Global": 93,
-};
 
 const years = [
   "2025",
@@ -88,7 +75,6 @@ const years = [
   "2011",
 ];
 
-
 export default function ArchivePage() {
   const [activePage, setActivePage] = useState(1);
   const [selectedKeywords, setSelectedKeywords] = useState([]);
@@ -96,6 +82,8 @@ export default function ArchivePage() {
   const [selectedTrends, setSelectedTrends] = useState([]);
   const [sortBy, setSortBy] = useState("popular");
   const [isFilterOpen, setIsFilterOpen] = useState(true);
+
+  const navigate = useNavigate(); // 👈 네비게이터
 
   const toggleKeyword = (keyword) => {
     setSelectedKeywords((prev) =>
@@ -115,7 +103,6 @@ export default function ArchivePage() {
     );
   };
 
-  // Rising 카드 3개 (원하면 여기만 바꾸면 됨)
   const rising = useMemo(
     () => [
       { label: "Fandom", img: imgRectangle29, rank: 2, size: "small" },
@@ -125,8 +112,16 @@ export default function ArchivePage() {
     [],
   );
 
+  // 👇 카드 클릭 시 디테일 페이지로 이동
+  const goDetail = (memeId) => {
+    navigate(`/archive/detail/${memeId}`);
+  };
+
   return (
     <div className={styles.screen}>
+      {/* 공통 Header */}
+      <Header />
+
       <main className={styles.page}>
         {/* Title + Search */}
         <div className={styles.hero}>
@@ -192,21 +187,22 @@ export default function ArchivePage() {
                 />
               </svg>
             </div>
-
           </div>
 
           <div className={styles.risingRight}>
             {rising.map((item) => (
               <article
                 key={item.label}
-                className={`${styles.podiumItem} ${item.size === "small" ? styles.podiumItemSmall : ""
-                  }`}
+                className={`${styles.podiumItem} ${
+                  item.size === "small" ? styles.podiumItemSmall : ""
+                }`}
               >
                 <div className={styles.podiumLabel}>{item.label}</div>
 
                 <div
-                  className={`${styles.podiumImg} ${item.size === "big" ? styles.podiumImgBig : styles.podiumImgSmall
-                    }`}
+                  className={`${styles.podiumImg} ${
+                    item.size === "big" ? styles.podiumImgBig : styles.podiumImgSmall
+                  }`}
                 >
                   <img src={item.img} alt={item.label} />
                   <div className={styles.podiumOverlay} />
@@ -231,17 +227,30 @@ export default function ArchivePage() {
                     onClick={() => setIsFilterOpen(false)}
                     aria-label="Collapse filter"
                   >
-                    <svg viewBox="0 0 24 24" className={`${styles.arrowSvg} ${styles.arrowLeft}`} aria-hidden="true">
-                      {/* head */}
-                      <path d="M18 12H6" stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" />
-                      {/* shaft */}
-                      <path d="M10 8L6 12L11 16" stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      className={`${styles.arrowSvg} ${styles.arrowLeft}`}
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M18 12H6"
+                        stroke="currentColor"
+                        strokeWidth="1.0"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M10 8L6 12L11 16"
+                        stroke="currentColor"
+                        strokeWidth="1.0"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        fill="none"
+                      />
                     </svg>
-
                   </button>
-
                 </div>
 
+                {/* 정렬 */}
                 <section className={`${styles.block} ${styles.blockSort}`}>
                   <div className={styles.blockTitle}>정렬</div>
                   <div className={styles.rowBtns}>
@@ -265,6 +274,7 @@ export default function ArchivePage() {
                   </div>
                 </section>
 
+                {/* 연도별 */}
                 <section className={`${styles.block} ${styles.blockYears}`}>
                   <div className={styles.blockTitle}>연도별</div>
                   <div className={styles.grid3}>
@@ -272,7 +282,9 @@ export default function ArchivePage() {
                       <button
                         key={y}
                         type="button"
-                        className={selectedYears.includes(y) ? styles.pillOn : styles.pillOff}
+                        className={
+                          selectedYears.includes(y) ? styles.pillOn : styles.pillOff
+                        }
                         onClick={() => toggleYear(y)}
                         aria-pressed={selectedYears.includes(y)}
                       >
@@ -282,18 +294,23 @@ export default function ArchivePage() {
                   </div>
                 </section>
 
+                {/* 키워드별 */}
                 <section className={`${styles.block} ${styles.blockKeywords}`}>
                   <div className={styles.blockTitle}>키워드별</div>
                   <div className={styles.keywordList}>
                     {keywordRows.map((row) => (
                       <div
-                        key={`${row.left}-${row.right}`}          // ✅ 문자열 key라 중복 X
+                        key={`${row.left}-${row.right}`}
                         className={styles.keywordRow}
-                        style={{ columnGap: `${row.gap}px` }}     // ✅ 행마다 gap
+                        style={{ columnGap: `${row.gap}px` }}
                       >
                         <button
                           type="button"
-                          className={selectedKeywords.includes(row.left) ? styles.pillOn : styles.pillOff}
+                          className={
+                            selectedKeywords.includes(row.left)
+                              ? styles.pillOn
+                              : styles.pillOff
+                          }
                           onClick={() => toggleKeyword(row.left)}
                           aria-pressed={selectedKeywords.includes(row.left)}
                         >
@@ -302,7 +319,11 @@ export default function ArchivePage() {
 
                         <button
                           type="button"
-                          className={selectedKeywords.includes(row.right) ? styles.pillOn : styles.pillOff}
+                          className={
+                            selectedKeywords.includes(row.right)
+                              ? styles.pillOn
+                              : styles.pillOff
+                          }
                           onClick={() => toggleKeyword(row.right)}
                           aria-pressed={selectedKeywords.includes(row.right)}
                         >
@@ -311,9 +332,9 @@ export default function ArchivePage() {
                       </div>
                     ))}
                   </div>
-
                 </section>
 
+                {/* 트렌드별 */}
                 <section className={`${styles.block} ${styles.blockTrends}`}>
                   <div className={styles.blockTitle}>트렌드별</div>
                   <div className={styles.colBtns}>
@@ -321,7 +342,9 @@ export default function ArchivePage() {
                       <button
                         key={t}
                         type="button"
-                        className={selectedTrends.includes(t) ? styles.pillOn : styles.pillOff}
+                        className={
+                          selectedTrends.includes(t) ? styles.pillOn : styles.pillOff
+                        }
                         onClick={() => toggleTrend(t)}
                         aria-pressed={selectedTrends.includes(t)}
                       >
@@ -340,15 +363,29 @@ export default function ArchivePage() {
                     onClick={() => setIsFilterOpen(true)}
                     aria-label="Expand filter"
                   >
-                    <svg viewBox="0 0 24 24" className={`${styles.arrowSvg} ${styles.arrowRight}`} aria-hidden="true">
-                      {/* ✅ 몸통 있는 화살표 */}
-                      <path d="M18 12H6" stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" />
-                      <path d="M10 8L6 12L11 16" stroke="currentColor" strokeWidth="1.0" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <svg
+                      viewBox="0 0 24 24"
+                      className={`${styles.arrowSvg} ${styles.arrowRight}`}
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M18 12H6"
+                        stroke="currentColor"
+                        strokeWidth="1.0"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M10 8L6 12L11 16"
+                        stroke="currentColor"
+                        strokeWidth="1.0"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        fill="none"
+                      />
                     </svg>
                   </button>
                 </div>
               </div>
-
             )}
           </aside>
 
@@ -360,62 +397,94 @@ export default function ArchivePage() {
                 <div className={styles.underline} aria-hidden="true" />
               </div>
 
-              {/* ✅ 필터 닫혔을 때만 우측 상단에 Filter 표시 */}
               {!isFilterOpen && (
-                <div className={`${styles.sidebarTitle} ${styles.closedFilterLabel}`}>
+                <div
+                  className={`${styles.sidebarTitle} ${styles.closedFilterLabel}`}
+                >
                   Filter
                 </div>
               )}
             </div>
 
             <div className={isFilterOpen ? styles.memeGrid3 : styles.memeGrid4}>
-              {memeImages.map((img, idx) => (
-                <div key={idx} className={styles.card}>
-                  <div className={styles.cardMedia}>
-                    <img src={img} alt={`Meme ${idx + 1}`} className={styles.cardImg} />
+              {memeImages.map((img, idx) => {
+                const memeId = idx + 1; // 👈 1부터 시작하는 id
 
-                    {/* ✅ hover 시 뜨는 하단 정보 패널 */}
-                    <div className={styles.cardInfo}>
-                      <div className={styles.cardTitle}>밈 제목</div>
+                return (
+                  <div
+                    key={idx}
+                    className={styles.card}
+                    onClick={() => goDetail(memeId)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === "Enter" && goDetail(memeId)}
+                  >
+                    <div className={styles.cardMedia}>
+                      <img
+                        src={img}
+                        alt={`Meme ${memeId}`}
+                        className={styles.cardImg}
+                      />
 
-                      <div className={styles.cardChips}>
-                        <span className={styles.chip}>키워드</span>
-                        <span className={styles.chip}>키워드</span>
-                      </div>
+                      <div className={styles.cardInfo}>
+                        <div className={styles.cardTitle}>밈 제목</div>
 
-                      <div className={styles.cardMeta}>
-                        <div className={styles.metaItem}>
-                          <svg viewBox="0 0 24 24" className={styles.metaIcon} aria-hidden="true">
-                            <path
-                              d="M12 21s-7-4.35-9.5-8.5C.7 9.15 2.3 6 6 6c2.1 0 3.4 1.2 4 2
-                   .6-.8 1.9-2 4-2 3.7 0 5.3 3.15 3.5 6.5C19 16.65 12 21 12 21Z"
-                              fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"
-                            />
-                          </svg>
-                          <span>1,453</span>
+                        <div className={styles.cardChips}>
+                          <span className={styles.chip}>키워드</span>
+                          <span className={styles.chip}>키워드</span>
                         </div>
 
-                        <span className={styles.metaDivider} />
+                        <div className={styles.cardMeta}>
+                          <div className={styles.metaItem}>
+                            <svg
+                              viewBox="0 0 24 24"
+                              className={styles.metaIcon}
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M12 21s-7-4.35-9.5-8.5C.7 9.15 2.3 6 6 6c2.1 0 3.4 1.2 4 2 .6-.8 1.9-2 4-2 3.7 0 5.3 3.15 3.5 6.5C19 16.65 12 21 12 21Z"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            <span>1,453</span>
+                          </div>
 
-                        <div className={styles.metaItem}>
-                          <svg viewBox="0 0 24 24" className={styles.metaIcon} aria-hidden="true">
-                            <path
-                              d="M20 15a4 4 0 0 1-4 4H9l-5 3V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8Z"
-                              fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"
-                            />
-                          </svg>
-                          <span>323</span>
+                          <span className={styles.metaDivider} />
+
+                          <div className={styles.metaItem}>
+                            <svg
+                              viewBox="0 0 24 24"
+                              className={styles.metaIcon}
+                              aria-hidden="true"
+                            >
+                              <path
+                                d="M20 15a4 4 0 0 1-4 4H9l-5 3V7a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8Z"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.6"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                            <span>323</span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-
+                );
+              })}
             </div>
 
             <div className={styles.pagination}>
-              <button type="button" className={styles.pageBtn} aria-label="Prev" onClick={() => setActivePage((p) => Math.max(1, p - 1))}>
+              <button
+                type="button"
+                className={styles.pageBtn}
+                aria-label="Prev"
+                onClick={() => setActivePage((p) => Math.max(1, p - 1))}
+              >
                 ‹
               </button>
 
@@ -423,7 +492,9 @@ export default function ArchivePage() {
                 <button
                   key={n}
                   type="button"
-                  className={`${styles.pageNum} ${activePage === n ? styles.pageNumOn : ""}`}
+                  className={`${styles.pageNum} ${
+                    activePage === n ? styles.pageNumOn : ""
+                  }`}
                   onClick={() => setActivePage(n)}
                   aria-current={activePage === n ? "page" : undefined}
                 >
@@ -433,14 +504,21 @@ export default function ArchivePage() {
 
               <span className={styles.pageDots}>…</span>
 
-              <button type="button" className={styles.pageBtn} aria-label="Next" onClick={() => setActivePage((p) => p + 1)}>
+              <button
+                type="button"
+                className={styles.pageBtn}
+                aria-label="Next"
+                onClick={() => setActivePage((p) => p + 1)}
+              >
                 ›
               </button>
             </div>
-
           </section>
         </div>
       </main>
+
+      {/* 공통 Footer */}
+      <Footer />
     </div>
   );
 }

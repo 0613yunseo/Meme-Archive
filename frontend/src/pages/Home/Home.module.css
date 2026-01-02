@@ -1,0 +1,83 @@
+
+.hero {
+  padding: 120px 40px 80px;
+  background: linear-gradient(180deg, #fafafa, #f4f1fb);
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  margin-top: 8px;
+  font-size: 20px;
+  color: #666;
+}
+
+.searchBox {
+  margin-top: 24px;
+  display: flex;
+  gap: 8px;
+}
+
+.searchBox input {
+  width: 400px;
+  height: 48px;
+  padding: 0 16px;
+}
+
+.searchBox button {
+  width: 48px;
+  cursor: pointer;
+}
+
+.section {
+  padding: 80px 40px;
+}
+
+.sub {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.cardRow {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  width: 240px;
+  background: #f4f1fb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.cardImage {
+  height: 140px;
+  background: #ddd;
+  border-radius: 8px;
+}
+
+.cardTitle {
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.tag {
+  font-size: 12px;
+  color: #7557ff;
+}
+
+.suggest {
+  padding: 80px 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.box {
+  flex: 1;
+  padding: 32px;
+  background: rgba(117, 87, 255, 0.15);
+  border-radius: 12px;
+}
+

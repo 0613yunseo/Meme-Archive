@@ -9,17 +9,23 @@
   align-items: center;
   justify-content: space-between;
 
-  padding: 67.38px 24px; /* 위 아래 간격 고정값 */
+  padding: 67.38px 40px; /* 위 아래 간격 고정값 */
   box-sizing: border-box;
 }
 
-/* ===== 왼쪽 회색 박스 ===== */
-.grayBox {
-  width: 150px;
-  height: 100%;
-  background-color: #d9d9d9;
-}
+/* ===== 왼쪽 로고 ===== */
+.logo {
+  width: 220px;
+  height: 47px;
 
+  font-family: "Orbitron", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #7557ff;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
 /* ===== 가운데 메뉴 그룹 ===== */
 .menuGroup {
   flex: 1;

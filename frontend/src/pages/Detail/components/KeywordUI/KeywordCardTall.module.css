@@ -1,0 +1,10 @@
+.card {
+    width: 258px;
+    height: 306px;
+  
+    border-radius: 10px;
+    background: #cecece;
+  
+    box-sizing: border-box;
+  }
+  
