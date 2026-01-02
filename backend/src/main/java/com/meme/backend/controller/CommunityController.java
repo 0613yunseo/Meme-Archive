@@ -1,9 +1,15 @@
 package com.meme.backend.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.meme.backend.dto.ApiResponse;
 import com.meme.backend.service.CommunityService;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/community")
@@ -12,15 +18,23 @@ public class CommunityController {
 
     private final CommunityService communityService;
 
-    // 좋아요 순 TOP 5
+    /**
+     * ⭐ 인기 밈 Top 5
+     * GET /api/community/top
+     */
     @GetMapping("/top")
     public ApiResponse<?> getTopList() {
-        return new ApiResponse<>(communityService.getTopList(), "success");
+        // ✅ message 먼저, data 나중
+        return new ApiResponse<>("success", communityService.getTopList());
     }
 
-    // 좋아요 증가
+    /**
+     * ❤️ 좋아요 +1 (중복 허용)
+     * POST /api/community/meme/{id}/like
+     */
     @PostMapping("/meme/{id}/like")
     public ApiResponse<?> like(@PathVariable Long id) {
-        return new ApiResponse<>(communityService.increaseLike(id), "success");
+        // ✅ message 먼저, data 나중
+        return new ApiResponse<>("success", communityService.increaseLike(id));
     }
 }

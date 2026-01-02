@@ -427,11 +427,11 @@ export default function ArchivePage() {
                       />
 
                       <div className={styles.cardInfo}>
-                        <div className={styles.cardTitle}>밈 제목</div>
+                        <div className={styles.cardTitle}>완전 럭키비키잖아!</div>
 
                         <div className={styles.cardChips}>
-                          <span className={styles.chip}>키워드</span>
-                          <span className={styles.chip}>키워드</span>
+                          <span className={styles.chip}>Funny</span>
+                          <span className={styles.chip}>Korean</span>
                         </div>
 
                         <div className={styles.cardMeta}>
