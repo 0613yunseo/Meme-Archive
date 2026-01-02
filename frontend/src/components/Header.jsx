@@ -29,7 +29,11 @@ const Header = () => {
       {/* Sign In + 화살표 */}
       <div className={styles.signInWrap}>
         <span className={styles.signIn}>Sign in</span>
-        <img src={ArrowRightPurple} className={styles.arrow} alt="arrow" />
+        <img
+          src={ArrowRightPurple}
+          className={styles.arrow}
+          alt="arrow"
+        />
       </div>
 
     </div>

@@ -12,21 +12,37 @@ const Footer = () => {
       {/* 상단 카드 */}
       <div className={styles.topSection}>
         <div className={styles.heardBlock}>
-          <div className={styles.heardText}>HEARD<br/>ENOUGH?</div>
-          <img src={ArrowLeft} className={styles.smallArrow} />
+          <div className={styles.heardText}>
+            HEARD<br />ENOUGH?
+          </div>
+          <img
+            src={ArrowLeft}
+            className={styles.smallArrow}
+            alt="arrow left"
+          />
         </div>
 
         <div className={styles.contactTitle}>Contact us</div>
 
         <div className={styles.circleWrap}>
-          <img src={ArrowRightCircle} className={styles.circleBg} />
-          <img src={ArrowRight} className={styles.circleArrow} />
+          <img
+            src={ArrowRightCircle}
+            className={styles.circleBg}
+            alt="circle background"
+          />
+          <img
+            src={ArrowRight}
+            className={styles.circleArrow}
+            alt="arrow right"
+          />
         </div>
       </div>
 
-      {/* 보라 카드 */}
+      {/* 하단 보라 카드 */}
       <div className={styles.bottomSection}>
-        <p className={styles.subText}>Let’s get this meme party started.</p>
+        <p className={styles.subText}>
+          Let’s get this meme party started.
+        </p>
         <p className={styles.email}>Meme@ourmemehub.com</p>
 
         <div className={styles.menuGrid}>

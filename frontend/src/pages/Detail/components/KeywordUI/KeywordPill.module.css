@@ -1,0 +1,24 @@
+.pill {
+    width: 89px;
+    height: 37px;
+  
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    padding: 10px 25px;     /* 상하 10, 좌우 25 */
+    gap: 10px;
+  
+    border-radius: 50px;
+    border: 0.75px solid #7557ff;
+  
+    background: #ffffff;
+    color: #7557ff;
+  
+    /* 폰트는 스샷에 없어서 기존 tagBtn 느낌으로 무난하게 */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    box-sizing: border-box;
+  }
+  
