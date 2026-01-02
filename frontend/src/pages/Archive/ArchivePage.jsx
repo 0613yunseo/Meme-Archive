@@ -1,3 +1,10 @@
+feature/sarang-homepage
+export default function ArchivePage() {
+  return (
+    <div style={{ padding: "40px" }}>
+      <h1>Meme Archive</h1>
+      <p>All memes will be displayed here.</p>
+
 import { useMemo, useState } from "react";
 import styles from "./ArchivePage.module.css";
 
@@ -441,6 +448,7 @@ export default function ArchivePage() {
           </section>
         </div>
       </main>
+dev
     </div>
   );
 }

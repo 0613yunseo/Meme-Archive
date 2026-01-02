@@ -1,3 +1,11 @@
+ feature/sarang-homepage
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  background-color: #fafafa;
+}
+
 /* ✅ Vite 기본 #root max-width / padding 때문에 생기는 양옆 흰 여백 제거 */
 :global(html, body, #root) {
   width: 100%;
@@ -782,3 +790,4 @@
   outline: none;
   box-shadow: none;
 }
+ dev
